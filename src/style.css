@@ -1,0 +1,72 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    @apply bg-slate-50 text-slate-800 antialiased dark:bg-slate-950 dark:text-slate-200;
+  }
+
+  :focus-visible {
+    @apply outline-none ring-2 ring-brand-500 ring-offset-2 ring-offset-slate-50 dark:ring-offset-slate-950;
+  }
+}
+
+@layer components {
+  .card {
+    @apply rounded-xl border border-slate-200 bg-white shadow-sm transition
+           dark:border-slate-800 dark:bg-slate-900;
+  }
+
+  .btn {
+    @apply inline-flex items-center justify-center gap-2 rounded-lg px-4 py-2
+           text-sm font-medium transition disabled:cursor-not-allowed disabled:opacity-50;
+  }
+
+  .btn-primary {
+    @apply btn bg-brand-600 text-white hover:bg-brand-700 active:bg-brand-800;
+  }
+
+  .btn-ghost {
+    @apply btn border border-slate-200 bg-white text-slate-700 hover:bg-slate-100
+           dark:border-slate-700 dark:bg-slate-900 dark:text-slate-200 dark:hover:bg-slate-800;
+  }
+
+  .chip {
+    @apply inline-flex items-center gap-1 rounded-full border px-2.5 py-1 text-xs
+           font-medium transition;
+  }
+
+  .chip-idle {
+    @apply chip border-slate-200 bg-slate-100 text-slate-600 hover:border-brand-300
+           hover:text-brand-700 dark:border-slate-700 dark:bg-slate-800 dark:text-slate-300
+           dark:hover:border-brand-500 dark:hover:text-brand-300;
+  }
+
+  .chip-active {
+    @apply chip border-brand-500 bg-brand-600 text-white hover:bg-brand-700;
+  }
+
+  .field-label {
+    @apply mb-2 block text-xs font-semibold uppercase tracking-wide text-slate-500
+           dark:text-slate-400;
+  }
+
+  .skeleton {
+    @apply animate-pulse rounded bg-slate-200 dark:bg-slate-800;
+  }
+}
+
+/* Third-party job descriptions arrive as arbitrary HTML; keep them inside
+   the layout no matter what markup the employer's ATS produced. */
+.job-body :where(img, iframe, table) {
+  @apply max-w-full;
+}
+
+.job-body :where(pre) {
+  @apply overflow-x-auto;
+}
