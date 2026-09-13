@@ -16,12 +16,37 @@ Vue Router, Vuex, Axios, Vite and Tailwind CSS**.
 
 ```bash
 npm install
-npm run dev      # http://localhost:8080
-npm run build    # production bundle into dist/
-npm run preview  # serve the built bundle
+npm run dev         # http://localhost:8080
+npm run build       # production bundle into dist/
+npm run preview     # serve the built bundle
+npm run build:file  # ONE self-contained .html into dist-file/
 ```
 
 Requires Node 18+.
+
+### Running it without a server
+
+`npm run build:file` inlines the whole app — JS, CSS, everything — into a single
+`dist-file/index.html`. Double-click it and the app runs from disk with live data; no web
+server, no hosting account, nothing to install. The router switches to hash URLs
+(`#/saved`) when it detects `file://`, since there is no server to resolve real paths
+against.
+
+## Deploying
+
+The bundle in `dist/` is plain static files and will run on any static host. It ships both
+SPA fallbacks, so the same folder works unmodified across providers:
+
+| Host | Command | Fallback used |
+| --- | --- | --- |
+| GitHub Pages | push to `main`, the workflow does the rest | `404.html` |
+| Surge | `npx surge ./dist` | `200.html` |
+| Netlify / Cloudflare Pages | drag `dist/` into the dashboard | `_redirects` |
+
+The one thing that must match the host is the base path. GitHub Pages serves a project
+site from `https://<user>.github.io/<repo>/`, so the workflow builds with
+`--base=/<repo>/`; everywhere else the site sits at the domain root and the default `/`
+is correct.
 
 ---
 
