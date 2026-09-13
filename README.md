@@ -1,5 +1,7 @@
 # DevBoard — IT vacancy search
 
+**Live: https://yedyge11.github.io/vuejs-search-vacancies/**
+
 A single search box over several public job APIs. DevBoard queries them live from the
 browser, normalises what comes back into one shape, drops the non-technical postings and
 lets you slice the rest by stack, seniority, employment type, salary and freshness.
